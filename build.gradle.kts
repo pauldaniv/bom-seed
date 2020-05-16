@@ -5,7 +5,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.fym"
+group = "com.paul"
 version = getTagOrDefault("1.0.0-SNAPSHOT")
 
 
@@ -21,48 +21,43 @@ publishing {
         }
     }
     publications {
-        maven(MavenPublication) {
+        create<MavenPublication>("mavenJava") {
+
             pom.withXml {
-                var xml = asNode()
 
-                xml.children().last() + {
-                    var mkp = delegate
+                val versionPropertiesFile = File("$projectDir/src/main/versions/_versions.properties")
+                val versionProperties = Properties()
+                versionProperties.load(StringReader(versionPropertiesFile.toString()))
+                properties.set(versionProperties.toMutableMap())
+                println(properties)
 
-                    var versionPropertiesFile: File = File("$projectDir/src/main/versions/_versions.properties")
-                    var versionProperties: Properties = Properties()
-                    versionProperties.load(StringReader(versionPropertiesFile.toString()))
-
-                    mkp.properties {
-                        for (dep in versionProperties.entrySet()) {
-                            mkp."${dep.key}"(dep.value)
-                        }
-                    }
-
-                    mkp.dependencyManagement {
-                        mkp.dependencies {
-                            for (propertyFile: File in File("$projectDir/src/main/versions").listFiles()) {
-
-                                if (propertyFile.name == '_versions.properties') {
-                                    continue
-                                }
-
-                                val groupIdFromFile: String = propertyFile.name - '.properties'
-
-                                val versions: = Properties()
-                                versions.load(StringReader(propertyFile.toString()))
-
-                                for (pair in versions.entrySet()) {
-                                    mkp.dependency {
-                                        val finalVersion = pair . value ==~ /\d.*/ ? pair.value : "\${$pair.value}"
-                                        mkp.groupId groupIdFromFile
-                                                mkp.artifactId pair . key
-                                                mkp.version finalVersion
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+//                xml.children().last() + {
+//                    var mkp = delegate
+//                    mkp.dependencyManagement {
+//                        mkp.dependencies {
+//                            for (propertyFile: File in File("$projectDir/src/main/versions").listFiles()) {
+//
+//                                if (propertyFile.name == '_versions.properties') {
+//                                    continue
+//                                }
+//
+//                                val groupIdFromFile: String = propertyFile.name - '.properties'
+//
+//                                val versions: = Properties()
+//                                versions.load(StringReader(propertyFile.toString()))
+//
+//                                for (pair in versions.entrySet()) {
+//                                    mkp.dependency {
+//                                        val finalVersion = pair . value ==~ /\d.*/ ? pair.value : "\${$pair.value}"
+//                                        mkp.groupId groupIdFromFile
+//                                                mkp.artifactId pair . key
+//                                                mkp.version finalVersion
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
     }

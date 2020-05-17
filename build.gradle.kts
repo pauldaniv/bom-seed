@@ -3,6 +3,7 @@ import java.io.StringReader
 import java.util.*
 
 plugins {
+    base
     `maven-publish`
 }
 
@@ -42,15 +43,14 @@ publishing {
                 val dependencies = Node(dependencyManagement, "dependencies")
 
                 file("$srcDir/dependencies").listFiles()?.forEach {
-                    val groupIdFromFile = it.name.removeSuffix(".prooperties")
                     val dependencyVersions = Properties()
                     dependencyVersions.load(StringReader(it.readText()))
                     dependencyVersions.entries.forEach { v ->
                         val dependency = Node(dependencies, "dependency")
-                        dependency.appendNode("groupId", groupIdFromFile)
+                        dependency.appendNode("groupId", it.nameWithoutExtension)
                         dependency.appendNode("artifactId", v.key)
                         dependency.appendNode("version",
-                                if (versionProperties.containsKey(v.value)) v.value else "\${$v.value}")
+                                if (versionProperties.containsKey(v.value))  "\${${v.value}}" else v.value )
                     }
                 }
             }

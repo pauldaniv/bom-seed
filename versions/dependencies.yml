@@ -1,12 +1,29 @@
 org:
+  assertj:
+    assertj-core: assertj-core
+
+  apache:
+    kafka:
+      kafka_${scala.version}: kafka
+    spark:
+      spark-streaming-kafka_${scala.version}: spark-streaming-kafka
+
   codehouse:
     groovy:
       groovy: groovy
       groovy-all: groovy
       groovy-json: groovy
 
-  assertj:
-    assertj-core: assertj-core
+  junit:
+    junit: junit
 
-junit:
-  junit: junit
+  projectlombok:
+    lombok: lombok
+
+  scala-lang:
+    scala-library: scala-full
+
+com:
+  datastax:
+    spark:
+      spark-cassandra-connector_${scala.version}: spark-cassandra-connector

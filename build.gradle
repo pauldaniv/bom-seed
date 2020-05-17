@@ -1,4 +1,5 @@
 plugins {
+    id 'base'
     id 'maven-publish'
 }
 
@@ -45,7 +46,7 @@ publishing {
                         dependency.appendNode("groupId", groupIdFromFile)
                         dependency.appendNode("artifactId", it.key)
                         dependency.appendNode("version",
-                                versionProperties.hasProperty(it.value as String) ? it.value : "\${$it.value}")
+                                versionProperties.containsKey(it.value as String) ? "\${$it.value}" : it.value)
                     }
                 }
             }

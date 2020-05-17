@@ -5,7 +5,7 @@ plugins {
 group 'com.paul'
 version getTagOrDefault('1.0.0-SNAPSHOT')
 
-def deployUsr = project.findProperty("gpr.usr") ?: System.getenv("USERNAME")
+def deployUsr = project.findProperty("gpr.usr") ?: System.getenv("USERNAME") ?: ''
 def deployKey = project.findProperty("gpr.key") ?: System.getenv("TOKEN") ?: System.getenv('GITHUB_TOKEN')
 def repoKey = System.getenv('GITHUB_REPOSITORY') ?: "$deployUsr/$projectDir.name"
 def publishUrl = "https://maven.pkg.github.com/$repoKey"

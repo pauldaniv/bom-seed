@@ -1,0 +1,12 @@
+org:
+  codehouse:
+    groovy:
+      groovy: groovy
+      groovy-all: groovy
+      groovy-json: groovy
+
+  assertj:
+    assertj-core: assertj-core
+
+junit:
+  junit: junit

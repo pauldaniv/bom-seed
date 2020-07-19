@@ -20,7 +20,7 @@ plugins {
 }
 
 group = "com.paul"
-version = getTagOrDefault("1.0.2-SNAPSHOT")
+version = getTagOrDefault("1.0.3-SNAPSHOT")
 
 val deployUsr: String = (project.findProperty("gpr.usr") ?: System.getenv("USERNAME") ?: "").toString()
 val deployKey: String = (project.findProperty("gpr.key") ?: System.getenv("TOKEN")

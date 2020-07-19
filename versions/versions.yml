@@ -1,5 +1,5 @@
 groovy: 2.5.6
-assertj-core: 3.15.0
+assertj-core: 3.16.1
 junit: 4.12
 scala: 2.11
 kafka: 0.8.2.1

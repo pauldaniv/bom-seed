@@ -23,7 +23,7 @@ org:
 com:
   asprise:
     ocr:
-      ava-ocr-api: java-ocr-api
+      java-ocr-api: java-ocr-api
   datastax:
     spark:
       spark-cassandra-connector_${scala.version}: spark-cassandra-connector

@@ -8,7 +8,7 @@ org:
     spark:
       spark-streaming-kafka_${scala.version}: spark-streaming-kafka
 
-  codehous:
+  codehaus:
     groovy:
       groovy: groovy
       groovy-all: groovy

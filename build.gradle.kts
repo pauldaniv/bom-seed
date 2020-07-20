@@ -20,7 +20,7 @@ plugins {
 }
 
 group = "com.paul"
-version = version
+version = getBomVersionParts().joinToString(".")
 
 val deployUsr: String = (project.findProperty("gpr.usr") ?: System.getenv("USERNAME") ?: "").toString()
 val deployKey: String = (project.findProperty("gpr.key") ?: System.getenv("TOKEN")
@@ -88,8 +88,6 @@ fun getBomVersionParts() = File("version.txt").bufferedReader().readLine().split
 fun saveVersion(version: String) = File("version.txt").writeText(version)
 
 val mapper = ObjectMapper(YAMLFactory()).registerKotlinModule()
-
-fun getVersion() = getBomVersionParts().joinToString(".")
 
 fun loadMap(path: String): Map<String, String> = loadFile(path)
 

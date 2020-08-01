@@ -7,3 +7,4 @@ lombok: 1.18.4
 spark-cassandra-connector: 2:4:2
 spark-streaming-kafka: 1.6.3
 java-ocr-api: 15.3.0.3
+guava: 29.0-jre

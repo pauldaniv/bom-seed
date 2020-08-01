@@ -28,5 +28,8 @@ com:
     spark:
       spark-cassandra-connector_${scala.version}: spark-cassandra-connector
 
+  google:
+    guava:
+      guava: guava
 junit:
   junit: junit

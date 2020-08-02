@@ -1,1 +1,1 @@
-rootProject.name = "bom"
+rootProject.name = "bom-template"

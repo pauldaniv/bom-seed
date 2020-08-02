@@ -21,9 +21,15 @@ org:
     scala-library: scala-full
 
 com:
+  asprise:
+    ocr:
+      java-ocr-api: java-ocr-api
   datastax:
     spark:
       spark-cassandra-connector_${scala.version}: spark-cassandra-connector
 
+  google:
+    guava:
+      guava: guava
 junit:
   junit: junit

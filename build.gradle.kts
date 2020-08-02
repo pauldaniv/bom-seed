@@ -66,22 +66,29 @@ publishing {
   }
 }
 
+
 tasks.register("bumpMajorVersion") {
-  val version = getBomVersionParts()
-  val newVersion = version[0].toInt() + 1
-  saveVersion("$newVersion.0.0")
+  doLast{
+    val version = getBomVersionParts()
+    val newVersion = version[0].toInt() + 1
+    saveVersion("$newVersion.0.0")
+  }
 }
 
 tasks.register("bumpMinorVersion") {
-  val version = getBomVersionParts()
-  val newVersion = version[1].toInt() + 1
-  saveVersion("${version[0]}.$newVersion.0")
+  doLast {
+    val version = getBomVersionParts()
+    val newVersion = version[1].toInt() + 1
+    saveVersion("${version[0]}.$newVersion.0")
+  }
 }
 
 tasks.register("bumpBuildVersion") {
-  val version = getBomVersionParts()
-  val newVersion = version[2].toInt() + 1
-  saveVersion("${version[0]}.${version[1]}.$newVersion")
+  doLast {
+    val version = getBomVersionParts()
+    val newVersion = version[2].toInt() + 1
+    saveVersion("${version[0]}.${version[1]}.$newVersion")
+  }
 }
 
 fun getBomVersionParts() = File("version.txt").bufferedReader().readLine().split(".")

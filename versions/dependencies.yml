@@ -20,6 +20,16 @@ org:
   scala-lang:
     scala-library: scala-full
 
+  slf4j:
+    slf4j-api: slf4j
+    slf4j-log4j12: slf4j
+
+  postgresql:
+    postgresql: postgres
+
+  junit:
+    jupiter:
+      junit-jupiter: junit-jupiter
 com:
   asprise:
     ocr:
@@ -31,5 +41,11 @@ com:
   google:
     guava:
       guava: guava
+
+  squareup:
+    retrofit2:
+      retrofit: retrofit2
+      converter-gson: retrofit2
+
 junit:
   junit: junit
